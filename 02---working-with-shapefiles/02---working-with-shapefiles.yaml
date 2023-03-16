@@ -1,7 +1,10 @@
 schemaVersion: 1
 meta:
-  sourceVersionId: 81a4183e-a9ca-452b-91be-a593aa65bd79 # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
-  description: ""
+  sourceVersionId: 631ce18d-d232-4b54-b9b2-b05dac799470 # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
+  description: |-
+    Summary:
+    We upload shapefiles to a Snowflake stage and use a Stored Procedure utilizing geopandas library to convert the shapefiles into regular Snowflake tables. The shapefiles include demographic information about Germany at district level. (German: Landkreis)
+    Last but not least we are using Python to visualize the shapefiles.
   projectId: 65b14eec-a9d3-4367-8c8e-6f841358074b # DO NOT CHANGE - Unique ID of the project from which this file was generated
   title: 02 - Working with Shapefiles
   timezone: null
@@ -19,13 +22,622 @@ projectAssets:
 sharedAssets:
   secrets: []
   vcsPackages: []
-  dataConnections: []
+  dataConnections:
+    - dataConnectionId: 05de082a-3dc3-4319-9547-b897741f40cb # Snowflake (snowflake)
 cells:
-  - cellType: CODE
-    cellId: 78898917-b043-4e33-8bf2-45fd277e1b61 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+  - cellType: TEXT
+    cellId: 11b4f79e-d3f4-4492-acc7-cbace58308d0 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
     cellLabel: null
     config:
-      source: print('TEST')
+      richText:
+        - type: paragraph
+          children:
+            - text: |
+                Data Source:
+            - url: https://regionalatlas.statistikportal.de/
+              type: a
+              children:
+                - text: https://regionalatlas.statistikportal.de/
+            - text: |-
+                
+
+                Note:
+                There are also data providers that provide Demographic data directly in Snowflake via Data Sharing which would eliminate these steps completely.
+  - cellType: CODE
+    cellId: 0a1aa688-8420-4ca4-aa85-78a5c199c108 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        from snowflake.snowpark.session import Session
+        import snowflake.snowpark.functions as F
+        from snowflake.snowpark.functions import sproc
+  - cellType: CODE
+    cellId: 4cc5e4c6-ff3c-44cd-8de6-6fa46c15aaaa # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        import hextoolkit
+        hex_snowflake_conn = hextoolkit.get_data_connection('Snowflake')
+        hex_snowpark_session = hex_snowflake_conn.get_snowpark_session()
+  - cellType: CODE
+    cellId: f68ad163-e64f-4c88-86b3-be0d30ff154c # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: hex_snowpark_session.use_schema('PUBLIC')
+  - cellType: TEXT
+    cellId: 7edb1794-73de-4641-9eab-cf6dfcb6c076 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: "Download shapefiles from Github:"
+  - cellType: CODE
+    cellId: cb3b9aa5-26c4-476b-858d-42a30fff304e # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        !wget https://github.com/michaelgorkow/hex_snowpark_hol/blob/main/data/shapefiles/germany_average_age.zip?raw=true -O germany_average_age.zip
+        !wget https://github.com/michaelgorkow/hex_snowpark_hol/blob/main/data/shapefiles/germany_average_available_income.zip?raw=true -O germany_average_available_income.zip
+        !wget https://github.com/michaelgorkow/hex_snowpark_hol/blob/main/data/shapefiles/germany_average_bip_per_inhabitant.zip?raw=true -O germany_average_bip_per_inhabitant.zip
+        !wget https://github.com/michaelgorkow/hex_snowpark_hol/blob/main/data/shapefiles/germany_hospital_bed_density.zip?raw=true -O germany_hospital_bed_density.zip
+        !wget https://github.com/michaelgorkow/hex_snowpark_hol/blob/main/data/shapefiles/germany_population_density.zip?raw=true -O germany_population_density.zip
+        !wget https://github.com/michaelgorkow/hex_snowpark_hol/blob/main/data/shapefiles/germany_unemployment_rate.zip?raw=true -O germany_unemployment_rate.zip
+  - cellType: TEXT
+    cellId: 416597b1-2b87-4eb9-831d-62c3d5d4f3a0 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: "Create Snowflake Stages to store shapefiles and functions:"
+  - cellType: CODE
+    cellId: cf32f551-50ee-4f4f-9641-44b3d2cbabdd # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        hex_snowpark_session.sql('CREATE STAGE IF NOT EXISTS SHAPEFILES').collect()
+        hex_snowpark_session.sql('CREATE STAGE IF NOT EXISTS FUNCTIONS').collect()
+  - cellType: TEXT
+    cellId: 66d4afa3-0f40-48d0-919a-4eef7a9dcc41 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: "Upload shapefiles to Snowflake stage:"
+  - cellType: CODE
+    cellId: 07c81ff7-10e1-4eac-bdb4-449f117bbe0e # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        hex_snowpark_session.file.put(
+            local_file_name='*', 
+            stage_location='@SHAPEFILES', 
+            auto_compress=False, 
+            overwrite=True,
+            parallel=8
+            )
+  - cellType: CODE
+    cellId: a287ac1f-329a-40e4-8cf3-75a80ce49551 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: hex_snowpark_session.sql('LIST @SHAPEFILES').show()
+  - cellType: TEXT
+    cellId: e331ebf2-d8bd-4388-aa58-907a463c5b92 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: Stored Procedure to process shapefiles in Snowflake into Snowflake tables
+  - cellType: CODE
+    cellId: 3f69a5c4-f56f-49c3-bea1-b0a5bc4808ca # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        # Stored Procedure to parse shapefiles
+        @sproc(name='PROCESS_SHAPEFILE', 
+               stage_location='@FUNCTIONS', 
+               packages=['snowflake-snowpark-python','geopandas'], 
+               is_permanent=True, 
+               replace=True, 
+               session=hex_snowpark_session
+               )
+        def process_shapefile(session: Session,
+                              shapefile_path: str, 
+                              geometry_col: str,
+                              crs: str,
+                              output_table: str) -> str:
+            import geopandas as gpd
+            import snowflake.snowpark.functions as F
+            # read shapefile from stage
+            geo_df = gpd.GeoDataFrame.from_file(session.file.get_stream(shapefile_path))
+            geo_df[geometry_col] = geo_df[geometry_col].to_crs(crs)
+            geo_df.columns = [col.upper() for col in geo_df.columns]
+            # Create dataframe for shapefile (convert geopandas geometry to WKT format)
+            df = session.create_dataframe(geo_df.to_wkt())
+            # Convert geometry column to geography datatype
+            df = df.with_column(geometry_col, F.call_builtin('ST_GEOGRAPHYFROMWKT', F.col(geometry_col)))
+            df.write.save_as_table(table_name=output_table, mode='overwrite')
+            return f'Written shapefile content to table: {output_table}'
+  - cellType: CODE
+    cellId: 6a8ab269-a067-453d-ae70-26fabe9f1ca1 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        # Transform first shape-file
+        shapefile_path = '@SHAPEFILES/germany_average_age.zip'
+        geometry_col = 'geometry'
+        crs = 'EPSG:4326'
+        output_table = 'GERMANY_AVERAGE_AGE'
+        process_shapefile(shapefile_path,geometry_col,crs,output_table)
+        hex_snowpark_session.table('GERMANY_AVERAGE_AGE').limit(5).to_pandas()
+  - cellType: CODE
+    cellId: 5819f1c5-ffeb-4e26-aec8-13ceaa3ef885 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        # Transform other shape-files (might take some time)
+        process_shapefile('@SHAPEFILES/germany_average_available_income.zip',geometry_col,crs,'GERMANY_AVERAGE_AVAILABLE_INCOME')
+        process_shapefile('@SHAPEFILES/germany_average_bip_per_inhabitant.zip',geometry_col,crs,'GERMANY_AVERAGE_GDP_PER_INHABITANT')
+        process_shapefile('@SHAPEFILES/germany_hospital_bed_density.zip',geometry_col,crs,'GERMANY_HOSPITAL_DENSITY')
+        process_shapefile('@SHAPEFILES/germany_population_density.zip',geometry_col,crs,'GERMANY_POPULATION_DENSITY')
+        process_shapefile('@SHAPEFILES/germany_unemployment_rate.zip',geometry_col,crs,'GERMANY_UNEMPLOYMENT_RATE')
+  - cellType: TEXT
+    cellId: c13e586d-7581-40cf-be77-8c7a0f08f4be # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: "The columns holding demographic data have cryptic names, so we'll change them:"
+  - cellType: CODE
+    cellId: 0fb2f32f-7b33-4e81-b76f-e86d00696de3 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        # AI1701 = Age
+        age_data = hex_snowpark_session.table('GERMANY_AVERAGE_AGE')
+        age_data = age_data.rename('AI0218', 'AVERAGE_AGE')
+        age_data = age_data.rename('GEN', 'DISTRICT')
+        age_data = age_data.drop(['SHAPE_LENG','SHAPE_AREA'])
+
+        # AI1701 = GDP
+        gdp_data = hex_snowpark_session.table('GERMANY_AVERAGE_GDP_PER_INHABITANT')
+        gdp_data = gdp_data.rename('AI1701', 'AVERAGE_GDP_PER_INHABITANT')
+        gdp_data = gdp_data.rename('GEN', 'DISTRICT')
+        gdp_data = gdp_data.drop(['SHAPE_LENG','SHAPE_AREA'])
+
+        # AI1401 = Hospital Density
+        hospital_data = hex_snowpark_session.table('GERMANY_HOSPITAL_DENSITY')
+        hospital_data = hospital_data.rename('AI1401', 'HOSPITAL_DENSITY')
+        hospital_data = hospital_data.rename('GEN', 'DISTRICT')
+        hospital_data = hospital_data.drop(['SHAPE_LENG','SHAPE_AREA'])
+
+        # AI1701 = Population Density
+        population_data = hex_snowpark_session.table('GERMANY_POPULATION_DENSITY')
+        population_data = population_data.rename('AI0201', 'POPULATION_DENSITY')
+        population_data = population_data.rename('GEN', 'DISTRICT')
+        population_data = population_data.drop(['SHAPE_LENG','SHAPE_AREA'])
+
+        # AI0801 = Unemployment Rate
+        unemployment_data = hex_snowpark_session.table('GERMANY_UNEMPLOYMENT_RATE')
+        unemployment_data = unemployment_data.rename('AI0801', 'UNEMPLOYMENT_RATE')
+        unemployment_data = unemployment_data.rename('GEN', 'DISTRICT')
+        unemployment_data = unemployment_data.drop(['SHAPE_LENG','SHAPE_AREA'])
+  - cellType: TEXT
+    cellId: 54d0ea45-33bc-419d-9802-5c06b151d6bd # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: h2
+          children:
+            - bold: true
+              text: Visualizing demographic data
+        - type: paragraph
+          children:
+            - text: "Note: "
+              italic: true
+        - type: paragraph
+          children:
+            - text: "The provided shape information is very detailed and will exceed Hex's limit for plotting geo-data. "
+              italic: true
+        - type: paragraph
+          children:
+            - text: For that reason we will use Snowflake's ST_SIMPLIFY function to simply the shapes.
+              italic: true
+        - type: paragraph
+          children:
+            - text: This will also reduce the data we have to collect from Snowflake for plotting.
+              italic: true
+        - type: paragraph
+          children:
+            - text: ""
+            - url: https://docs.snowflake.com/en/sql-reference/functions/st_simplify
+              type: a
+              children:
+                - text: Link to Documentation
+            - text: ""
+  - cellType: TEXT
+    cellId: 5ffb75b4-8919-45ac-afe2-d76634c74c8b # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: h3
+          children:
+            - text: Average Age
+  - cellType: CODE
+    cellId: a54dab0e-363d-45d2-9432-584c8c0ee491 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        plot_data_age = age_data.with_column(
+            'SIMPLIFIED_GEOMETRY', 
+            F.call_builtin('ST_SIMPLIFY', F.col('GEOMETRY'), F.lit(1000))
+            )
+        plot_data_age = plot_data_age[['SIMPLIFIED_GEOMETRY','DISTRICT','AVERAGE_AGE']]
+        plot_data_age = plot_data_age.to_pandas()
+  - cellType: MAP
+    cellId: d54fed8a-e18e-48ff-9e9c-3534cdf719d4 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      height: 520
+      map:
+        theme: hex
+        layers:
+          - id: 1b414e24-bcd3-41dd-89f1-435eeafc122c
+            data:
+              system: custom
+              dataFrameName: plot_data_age
+              dataFrameColumn: SIMPLIFIED_GEOMETRY
+            fill:
+              type: dynamic
+              colors:
+                - - 41
+                  - 160
+                  - 124
+                - - 242
+                  - 184
+                  - 36
+                - - 200
+                  - 70
+                  - 84
+              dataFrameColumn: AVERAGE_AGE
+            type: area
+            opacity: 0.6
+            outline:
+              color:
+                - 17
+                - 20
+                - 24
+              width: 20
+            visible: true
+            pointRadius:
+              type: static
+              value: 20
+            tooltipDataFrameColumns:
+              - DISTRICT
+              - AVERAGE_AGE
+  - cellType: TEXT
+    cellId: 78878794-56bb-43c9-8f9f-04bf42b1a683 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: h3
+          children:
+            - text: Average GDP per Inhabitant
+  - cellType: CODE
+    cellId: 86cf4c64-fdf0-4c13-bd93-c69f6173be35 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        plot_gdp_data = gdp_data.with_column(
+            'SIMPLIFIED_GEOMETRY', 
+            F.call_builtin('ST_SIMPLIFY', F.col('GEOMETRY'), F.lit(1000))
+            )
+        plot_gdp_data = plot_gdp_data[['SIMPLIFIED_GEOMETRY','DISTRICT','AVERAGE_GDP_PER_INHABITANT']]
+        plot_gdp_data = plot_gdp_data.to_pandas()
+  - cellType: MAP
+    cellId: d6cebcf8-baae-40cf-ad87-b51e8b11551f # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      height: 520
+      map:
+        theme: hex
+        layers:
+          - id: c66f4be5-3ac4-454f-903d-b8f90cef64ce
+            data:
+              dataFrameName: plot_gdp_data
+              dataFrameColumn: SIMPLIFIED_GEOMETRY
+            fill:
+              type: dynamic
+              colors:
+                - - 41
+                  - 160
+                  - 124
+                - - 242
+                  - 184
+                  - 36
+                - - 200
+                  - 70
+                  - 84
+              opacity: 1
+              dataFrameColumn: AVERAGE_GDP_PER_INHABITANT
+            type: area
+            opacity: 0.6
+            outline:
+              color:
+                - 17
+                - 20
+                - 24
+              width: 20
+            visible: true
+            pointRadius:
+              type: static
+              value: 20
+            tooltipDataFrameColumns:
+              - DISTRICT
+              - AVERAGE_GDP_PER_INHABITANT
+  - cellType: TEXT
+    cellId: 67ac56d4-86a7-48f1-ac81-adcddd97f826 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: h3
+          children:
+            - text: Hospital Density
+  - cellType: CODE
+    cellId: 57b8d832-cfce-466a-b741-e7b46b55b7af # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        plot_hospital_data = hospital_data.with_column(
+            'SIMPLIFIED_GEOMETRY', 
+            F.call_builtin('ST_SIMPLIFY', F.col('GEOMETRY'), F.lit(1000))
+            )
+        plot_hospital_data = plot_hospital_data[['SIMPLIFIED_GEOMETRY','DISTRICT','HOSPITAL_DENSITY']]
+        plot_hospital_data = plot_hospital_data.to_pandas()
+  - cellType: TEXT
+    cellId: 06232149-d8e0-47f5-8bbb-6c681bbe521e # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - text: Seems like there are districts that have false data ... Let's fix this by replacing them with average values.
+  - cellType: MAP
+    cellId: 26b7ce81-527a-45f2-8d2d-2b1957c81978 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      height: 520
+      map:
+        theme: hex
+        layers:
+          - id: 6b603647-9e8c-41b9-b640-cb6b54800dfe
+            data:
+              dataFrameName: plot_hospital_data
+              dataFrameColumn: SIMPLIFIED_GEOMETRY
+            fill:
+              type: dynamic
+              colors:
+                - - 41
+                  - 160
+                  - 124
+                - - 242
+                  - 184
+                  - 36
+                - - 200
+                  - 70
+                  - 84
+              dataFrameColumn: HOSPITAL_DENSITY
+            type: area
+            opacity: 0.6
+            outline:
+              color:
+                - 17
+                - 20
+                - 24
+              width: 20
+            visible: true
+            pointRadius:
+              type: static
+              value: 20
+            tooltipDataFrameColumns:
+              - DISTRICT
+              - HOSPITAL_DENSITY
+  - cellType: CODE
+    cellId: d4266ed2-30a7-44ff-9ade-518a3f20049c # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        # get all values except outliers
+        average_hospital_density = hospital_data.filter(F.col('HOSPITAL_DENSITY') < 100)
+        average_hospital_density = average_hospital_density.select(F.avg('HOSPITAL_DENSITY')).collect()[0][0]
+        print('Average Hospital Density is:', average_hospital_density)
+
+        # change all outliers to average value
+        hospital_data = hospital_data.with_column(
+            'HOSPITAL_DENSITY', 
+            F.when(F.col('HOSPITAL_DENSITY') > 100, F.lit(average_hospital_density)).otherwise(F.col('HOSPITAL_DENSITY'))
+            )
+  - cellType: CODE
+    cellId: 4fb4ef0a-5785-4708-b791-790154038982 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        plot_hospital_data = hospital_data.with_column(
+            'SIMPLIFIED_GEOMETRY', 
+            F.call_builtin('ST_SIMPLIFY', F.col('GEOMETRY'), F.lit(1000))
+            )
+        plot_hospital_data = plot_hospital_data[['SIMPLIFIED_GEOMETRY','DISTRICT','HOSPITAL_DENSITY']]
+        plot_hospital_data = plot_hospital_data.to_pandas()
+  - cellType: MAP
+    cellId: 3e12ee53-c112-4122-ad2e-4fe16ff39962 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      height: 520
+      map:
+        theme: hex
+        layers:
+          - id: efa58832-23e5-46b1-85dd-4132b2d2eff1
+            data:
+              system: custom
+              dataFrameName: plot_hospital_data
+              dataFrameColumn: SIMPLIFIED_GEOMETRY
+            fill:
+              type: dynamic
+              colors:
+                - - 41
+                  - 160
+                  - 124
+                - - 242
+                  - 184
+                  - 36
+                - - 200
+                  - 70
+                  - 84
+              dataFrameColumn: HOSPITAL_DENSITY
+            type: area
+            opacity: 0.6
+            outline:
+              color:
+                - 17
+                - 20
+                - 24
+              width: 20
+            visible: true
+            pointRadius:
+              type: static
+              value: 20
+            tooltipDataFrameColumns:
+              - DISTRICT
+              - HOSPITAL_DENSITY
+  - cellType: TEXT
+    cellId: 600f9db1-7971-4637-a9fb-eaab4232a746 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: h3
+          children:
+            - text: Population Density
+  - cellType: CODE
+    cellId: 8beff2c4-b52e-4d87-852b-9af25cd71a03 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        plot_population_data = population_data.with_column(
+            'SIMPLIFIED_GEOMETRY', 
+            F.call_builtin('ST_SIMPLIFY', F.col('GEOMETRY'), F.lit(1000))
+            )
+        plot_population_data = plot_population_data[['SIMPLIFIED_GEOMETRY','DISTRICT','POPULATION_DENSITY']]
+        plot_population_data = plot_population_data.to_pandas()
+  - cellType: MAP
+    cellId: 59da256c-3cc7-4eb1-80ac-b6ecf76abaef # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      height: 520
+      map:
+        theme: hex
+        layers:
+          - id: ed5fea31-539a-4197-a91e-c392aa74ca92
+            data:
+              system: custom
+              dataFrameName: plot_population_data
+              dataFrameColumn: SIMPLIFIED_GEOMETRY
+            fill:
+              type: dynamic
+              colors:
+                - - 41
+                  - 160
+                  - 124
+                - - 242
+                  - 184
+                  - 36
+                - - 200
+                  - 70
+                  - 84
+              dataFrameColumn: POPULATION_DENSITY
+            type: area
+            opacity: 0.6
+            outline:
+              color:
+                - 17
+                - 20
+                - 24
+              width: 20
+            visible: true
+            pointRadius:
+              type: static
+              value: 20
+            tooltipDataFrameColumns:
+              - DISTRICT
+              - POPULATION_DENSITY
+  - cellType: TEXT
+    cellId: 066c4a9f-520b-49e6-817e-94f92f3a89a1 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: h3
+          children:
+            - text: Unemployment Data
+  - cellType: CODE
+    cellId: a79f2297-b521-4973-9714-e6b8c93c6121 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        plot_unemployment_data = unemployment_data.with_column(
+            'SIMPLIFIED_GEOMETRY', 
+            F.call_builtin('ST_SIMPLIFY', F.col('GEOMETRY'), F.lit(1000))
+            )
+        plot_unemployment_data = plot_unemployment_data[['SIMPLIFIED_GEOMETRY','DISTRICT','UNEMPLOYMENT_RATE']]
+        plot_unemployment_data = plot_unemployment_data.to_pandas()
+  - cellType: MAP
+    cellId: 8d067ed4-d2cd-4210-adeb-f7dbbec08146 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      height: 520
+      map:
+        theme: hex
+        layers:
+          - id: 46388cdd-d26f-40d2-b977-9cf60f814c74
+            data:
+              system: custom
+              dataFrameName: plot_unemployment_data
+              dataFrameColumn: SIMPLIFIED_GEOMETRY
+            fill:
+              type: dynamic
+              colors:
+                - - 41
+                  - 160
+                  - 124
+                - - 242
+                  - 184
+                  - 36
+                - - 200
+                  - 70
+                  - 84
+              dataFrameColumn: UNEMPLOYMENT_RATE
+            type: area
+            opacity: 0.6
+            outline:
+              color:
+                - 17
+                - 20
+                - 24
+              width: 20
+            visible: true
+            pointRadius:
+              type: static
+              value: 20
+            tooltipDataFrameColumns:
+              - DISTRICT
+              - UNEMPLOYMENT_RATE
 appLayout:
   fullWidth: false
   visibleMetadataFields:
