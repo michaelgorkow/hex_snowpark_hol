@@ -1,10 +1,10 @@
 schemaVersion: 1
 meta:
-  sourceVersionId: 631ce18d-d232-4b54-b9b2-b05dac799470 # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
+  sourceVersionId: 83f1bc44-3eb4-454b-a6cb-c426461ec801 # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
   description: |-
     Summary:
     We upload shapefiles to a Snowflake stage and use a Stored Procedure utilizing geopandas library to convert the shapefiles into regular Snowflake tables. The shapefiles include demographic information about Germany at district level. (German: Landkreis)
-    Last but not least we are using Python to visualize the shapefiles.
+    Finally we will plot and clean the demographic data.
   projectId: 65b14eec-a9d3-4367-8c8e-6f841358074b # DO NOT CHANGE - Unique ID of the project from which this file was generated
   title: 02 - Working with Shapefiles
   timezone: null
@@ -78,6 +78,7 @@ cells:
     cellLabel: null
     config:
       source: |-
+        !rm -rf *
         !wget https://github.com/michaelgorkow/hex_snowpark_hol/blob/main/data/shapefiles/germany_average_age.zip?raw=true -O germany_average_age.zip
         !wget https://github.com/michaelgorkow/hex_snowpark_hol/blob/main/data/shapefiles/germany_average_available_income.zip?raw=true -O germany_average_available_income.zip
         !wget https://github.com/michaelgorkow/hex_snowpark_hol/blob/main/data/shapefiles/germany_average_bip_per_inhabitant.zip?raw=true -O germany_average_bip_per_inhabitant.zip
@@ -182,7 +183,7 @@ cells:
     cellLabel: null
     config:
       source: |-
-        # Transform other shape-files (might take some time)
+        # Transform other shape-files (will 1-2 minutes)
         process_shapefile('@SHAPEFILES/germany_average_available_income.zip',geometry_col,crs,'GERMANY_AVERAGE_AVAILABLE_INCOME')
         process_shapefile('@SHAPEFILES/germany_average_bip_per_inhabitant.zip',geometry_col,crs,'GERMANY_AVERAGE_GDP_PER_INHABITANT')
         process_shapefile('@SHAPEFILES/germany_hospital_bed_density.zip',geometry_col,crs,'GERMANY_HOSPITAL_DENSITY')
@@ -638,6 +639,25 @@ cells:
             tooltipDataFrameColumns:
               - DISTRICT
               - UNEMPLOYMENT_RATE
+  - cellType: TEXT
+    cellId: be28ed58-53fe-4328-9ca0-37dc14814c84 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: Save Transformation results
+  - cellType: CODE
+    cellId: 4b53937e-1970-4ac0-8782-7ade9b595852 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        age_data.write.save_as_table('GERMANY_AVERAGE_AGE', mode='overwrite')
+        gdp_data.write.save_as_table('GERMANY_AVERAGE_GDP_PER_INHABITANT', mode='overwrite')
+        hospital_data.write.save_as_table('GERMANY_HOSPITAL_DENSITY', mode='overwrite')
+        population_data.write.save_as_table('GERMANY_POPULATION_DENSITY', mode='overwrite')
+        unemployment_data.write.save_as_table('GERMANY_UNEMPLOYMENT_RATE', mode='overwrite')
 appLayout:
   fullWidth: false
   visibleMetadataFields:
