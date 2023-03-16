@@ -1,0 +1,40 @@
+schemaVersion: 1
+meta:
+  sourceVersionId: 81a4183e-a9ca-452b-91be-a593aa65bd79 # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
+  description: ""
+  projectId: 65b14eec-a9d3-4367-8c8e-6f841358074b # DO NOT CHANGE - Unique ID of the project from which this file was generated
+  title: 02 - Working with Shapefiles
+  timezone: null
+  appTheme: SYS_PREF
+  codeLanguage: PYTHON
+  status: null
+  categories: []
+  castDecimalsDefault: true
+  logicQueryCacheTimeout: null
+  publishedQueryCacheTimeout: null
+projectAssets:
+  dataConnections: []
+  envVars: []
+  secrets: []
+sharedAssets:
+  secrets: []
+  vcsPackages: []
+  dataConnections: []
+cells:
+  - cellType: CODE
+    cellId: 78898917-b043-4e33-8bf2-45fd277e1b61 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: print('TEST')
+appLayout:
+  fullWidth: false
+  visibleMetadataFields:
+    - NAME
+    - DESCRIPTION
+    - AUTHOR
+    - LAST_EDITED
+    - LAST_RUN
+    - CATEGORIES
+    - STATUS
+    - TABLE_OF_CONTENTS
+  rows: []
