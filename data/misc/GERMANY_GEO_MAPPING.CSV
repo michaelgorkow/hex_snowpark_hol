@@ -1,0 +1,418 @@
+,GEOGRAPHY_ID,DISTRICT_NAME,LEVEL
+0,01   ,Schleswig-Holstein,STATE
+1,01001,"Flensburg, Stadt",DISTRICT
+2,01002,"Kiel, Landeshauptstadt",DISTRICT
+3,01003,"Lübeck, Hansestadt",DISTRICT
+4,01004,"Neumünster, Stadt",DISTRICT
+5,01051,Dithmarschen,DISTRICT
+6,01053,Herzogtum Lauenburg,DISTRICT
+7,01054,Nordfriesland,DISTRICT
+8,01055,Ostholstein,DISTRICT
+9,01056,Pinneberg,DISTRICT
+10,01057,Plön,DISTRICT
+11,01058,Rendsburg-Eckernförde,DISTRICT
+12,01059,Schleswig-Flensburg,DISTRICT
+13,01060,Segeberg,DISTRICT
+14,01061,Steinburg,DISTRICT
+15,01062,Stormarn,DISTRICT
+16,02   ,Hamburg,STATE
+17,02000,"Hamburg, Freie und Hansestadt",DISTRICT
+18,03   ,Niedersachsen,STATE
+19,03101,"Braunschweig, Stadt",DISTRICT
+20,03102,"Salzgitter, Stadt",DISTRICT
+21,03103,"Wolfsburg, Stadt",DISTRICT
+22,03151,Gifhorn,DISTRICT
+23,03153,Goslar,DISTRICT
+24,03154,Helmstedt,DISTRICT
+25,03155,Northeim,DISTRICT
+26,03157,Peine,DISTRICT
+27,03158,Wolfenbüttel,DISTRICT
+28,03159,Göttingen,DISTRICT
+29,03241,Region Hannover,DISTRICT
+30,03251,Diepholz,DISTRICT
+31,03252,Hameln-Pyrmont,DISTRICT
+32,03254,Hildesheim,DISTRICT
+33,03255,Holzminden,DISTRICT
+34,03256,Nienburg (Weser),DISTRICT
+35,03257,Schaumburg,DISTRICT
+36,03351,Celle,DISTRICT
+37,03352,Cuxhaven,DISTRICT
+38,03353,Harburg,DISTRICT
+39,03354,Lüchow-Dannenberg,DISTRICT
+40,03355,Lüneburg,DISTRICT
+41,03356,Osterholz,DISTRICT
+42,03357,Rotenburg (Wümme),DISTRICT
+43,03358,Heidekreis,DISTRICT
+44,03359,Stade,DISTRICT
+45,03360,Uelzen,DISTRICT
+46,03361,Verden,DISTRICT
+47,03401,"Delmenhorst, Stadt",DISTRICT
+48,03402,"Emden, Stadt",DISTRICT
+49,03403,"Oldenburg (Oldenburg), Stadt",DISTRICT
+50,03404,"Osnabrück, Stadt",DISTRICT
+51,03405,"Wilhelmshaven, Stadt",DISTRICT
+52,03451,Ammerland,DISTRICT
+53,03452,Aurich,DISTRICT
+54,03453,Cloppenburg,DISTRICT
+55,03454,Emsland,DISTRICT
+56,03455,Friesland,DISTRICT
+57,03456,Grafschaft Bentheim,DISTRICT
+58,03457,Leer,DISTRICT
+59,03458,Oldenburg,DISTRICT
+60,03459,Osnabrück,DISTRICT
+61,03460,Vechta,DISTRICT
+62,03461,Wesermarsch,DISTRICT
+63,03462,Wittmund,DISTRICT
+64,04   ,Bremen,STATE
+65,04011,"Bremen, Stadt",DISTRICT
+66,04012,"Bremerhaven, Stadt",DISTRICT
+67,05   ,Nordrhein-Westfalen,STATE
+68,05111,"Düsseldorf, Stadt",DISTRICT
+69,05112,"Duisburg, Stadt",DISTRICT
+70,05113,"Essen, Stadt",DISTRICT
+71,05114,"Krefeld, Stadt",DISTRICT
+72,05116,"Mönchengladbach, Stadt",DISTRICT
+73,05117,"Mülheim an der Ruhr, Stadt",DISTRICT
+74,05119,"Oberhausen, Stadt",DISTRICT
+75,05120,"Remscheid, Stadt",DISTRICT
+76,05122,"Solingen, Klingenstadt",DISTRICT
+77,05124,"Wuppertal, Stadt",DISTRICT
+78,05154,Kleve,DISTRICT
+79,05158,Mettmann,DISTRICT
+80,05162,Rhein-Kreis Neuss,DISTRICT
+81,05166,Viersen,DISTRICT
+82,05170,Wesel,DISTRICT
+83,05314,"Bonn, Stadt",DISTRICT
+84,05315,"Köln, Stadt",DISTRICT
+85,05316,"Leverkusen, Stadt",DISTRICT
+86,05334,Städteregion Aachen,DISTRICT
+87,05358,Düren,DISTRICT
+88,05362,Rhein-Erft-Kreis,DISTRICT
+89,05366,Euskirchen,DISTRICT
+90,05370,Heinsberg,DISTRICT
+91,05374,Oberbergischer Kreis,DISTRICT
+92,05378,Rheinisch-Bergischer Kreis,DISTRICT
+93,05382,Rhein-Sieg-Kreis,DISTRICT
+94,05512,"Bottrop, Stadt",DISTRICT
+95,05513,"Gelsenkirchen, Stadt",DISTRICT
+96,05515,"Münster, Stadt",DISTRICT
+97,05554,Borken,DISTRICT
+98,05558,Coesfeld,DISTRICT
+99,05562,Recklinghausen,DISTRICT
+100,05566,Steinfurt,DISTRICT
+101,05570,Warendorf,DISTRICT
+102,05711,"Bielefeld, Stadt",DISTRICT
+103,05754,Gütersloh,DISTRICT
+104,05758,Herford,DISTRICT
+105,05762,Höxter,DISTRICT
+106,05766,Lippe,DISTRICT
+107,05770,Minden-Lübbecke,DISTRICT
+108,05774,Paderborn,DISTRICT
+109,05911,"Bochum, Stadt",DISTRICT
+110,05913,"Dortmund, Stadt",DISTRICT
+111,05914,"Hagen, Stadt der FernUniversität",DISTRICT
+112,05915,"Hamm, Stadt",DISTRICT
+113,05916,"Herne, Stadt",DISTRICT
+114,05954,Ennepe-Ruhr-Kreis,DISTRICT
+115,05958,Hochsauerlandkreis,DISTRICT
+116,05962,Märkischer Kreis,DISTRICT
+117,05966,Olpe,DISTRICT
+118,05970,Siegen-Wittgenstein,DISTRICT
+119,05974,Soest,DISTRICT
+120,05978,Unna,DISTRICT
+121,06   ,Hessen,STATE
+122,06411,"Darmstadt, Wissenschaftsstadt",DISTRICT
+123,06412,"Frankfurt am Main, Stadt",DISTRICT
+124,06413,"Offenbach am Main, Stadt",DISTRICT
+125,06414,"Wiesbaden, Landeshauptstadt",DISTRICT
+126,06431,Bergstraße,DISTRICT
+127,06432,Darmstadt-Dieburg,DISTRICT
+128,06433,Groß-Gerau,DISTRICT
+129,06434,Hochtaunuskreis,DISTRICT
+130,06435,Main-Kinzig-Kreis,DISTRICT
+131,06436,Main-Taunus-Kreis,DISTRICT
+132,06437,Odenwaldkreis,DISTRICT
+133,06438,Offenbach,DISTRICT
+134,06439,Rheingau-Taunus-Kreis,DISTRICT
+135,06440,Wetteraukreis,DISTRICT
+136,06531,Gießen,DISTRICT
+137,06532,Lahn-Dill-Kreis,DISTRICT
+138,06533,Limburg-Weilburg,DISTRICT
+139,06534,Marburg-Biedenkopf,DISTRICT
+140,06535,Vogelsbergkreis,DISTRICT
+141,06611,"Kassel, documenta-Stadt",DISTRICT
+142,06631,Fulda,DISTRICT
+143,06632,Hersfeld-Rotenburg,DISTRICT
+144,06633,Kassel,DISTRICT
+145,06634,Schwalm-Eder-Kreis,DISTRICT
+146,06635,Waldeck-Frankenberg,DISTRICT
+147,06636,Werra-Meißner-Kreis,DISTRICT
+148,07   ,Rheinland-Pfalz,STATE
+149,07111,"Koblenz, kreisfreie Stadt",DISTRICT
+150,07131,Ahrweiler,DISTRICT
+151,07132,Altenkirchen (Westerwald),DISTRICT
+152,07133,Bad Kreuznach,DISTRICT
+153,07134,Birkenfeld,DISTRICT
+154,07135,Cochem-Zell,DISTRICT
+155,07137,Mayen-Koblenz,DISTRICT
+156,07138,Neuwied,DISTRICT
+157,07140,Rhein-Hunsrück-Kreis,DISTRICT
+158,07141,Rhein-Lahn-Kreis,DISTRICT
+159,07143,Westerwaldkreis,DISTRICT
+160,07211,"Trier, kreisfreie Stadt",DISTRICT
+161,07231,Bernkastel-Wittlich,DISTRICT
+162,07232,Eifelkreis Bitburg-Prüm,DISTRICT
+163,07233,Vulkaneifel,DISTRICT
+164,07235,Trier-Saarburg,DISTRICT
+165,07311,"Frankenthal (Pfalz), kreisfreie Stadt",DISTRICT
+166,07312,"Kaiserslautern, kreisfreie Stadt",DISTRICT
+167,07313,"Landau in der Pfalz, kreisfreie Stadt",DISTRICT
+168,07314,"Ludwigshafen am Rhein, kreisfreie Stadt",DISTRICT
+169,07315,"Mainz, kreisfreie Stadt",DISTRICT
+170,07316,"Neustadt an der Weinstraße, kreisfreie Stadt",DISTRICT
+171,07317,"Pirmasens, kreisfreie Stadt",DISTRICT
+172,07318,"Speyer, kreisfreie Stadt",DISTRICT
+173,07319,"Worms, kreisfreie Stadt",DISTRICT
+174,07320,"Zweibrücken, kreisfreie Stadt",DISTRICT
+175,07331,Alzey-Worms,DISTRICT
+176,07332,Bad Dürkheim,DISTRICT
+177,07333,Donnersbergkreis,DISTRICT
+178,07334,Germersheim,DISTRICT
+179,07335,Kaiserslautern,DISTRICT
+180,07336,Kusel,DISTRICT
+181,07337,Südliche Weinstraße,DISTRICT
+182,07338,Rhein-Pfalz-Kreis,DISTRICT
+183,07339,Mainz-Bingen,DISTRICT
+184,07340,Südwestpfalz,DISTRICT
+185,08   ,Baden-Württemberg,STATE
+186,08111,"Stuttgart, Stadtkreis",DISTRICT
+187,08115,Böblingen,DISTRICT
+188,08116,Esslingen,DISTRICT
+189,08117,Göppingen,DISTRICT
+190,08118,Ludwigsburg,DISTRICT
+191,08119,Rems-Murr-Kreis,DISTRICT
+192,08121,"Heilbronn, Stadtkreis",DISTRICT
+193,08125,Heilbronn,DISTRICT
+194,08126,Hohenlohekreis,DISTRICT
+195,08127,Schwäbisch Hall,DISTRICT
+196,08128,Main-Tauber-Kreis,DISTRICT
+197,08135,Heidenheim,DISTRICT
+198,08136,Ostalbkreis,DISTRICT
+199,08211,"Baden-Baden, Stadtkreis",DISTRICT
+200,08212,"Karlsruhe, Stadtkreis",DISTRICT
+201,08215,Karlsruhe,DISTRICT
+202,08216,Rastatt,DISTRICT
+203,08221,"Heidelberg, Stadtkreis",DISTRICT
+204,08222,"Mannheim, Stadtkreis",DISTRICT
+205,08225,Neckar-Odenwald-Kreis,DISTRICT
+206,08226,Rhein-Neckar-Kreis,DISTRICT
+207,08231,"Pforzheim, Stadtkreis",DISTRICT
+208,08235,Calw,DISTRICT
+209,08236,Enzkreis,DISTRICT
+210,08237,Freudenstadt,DISTRICT
+211,08311,"Freiburg im Breisgau, Stadtkreis",DISTRICT
+212,08315,Breisgau-Hochschwarzwald,DISTRICT
+213,08316,Emmendingen,DISTRICT
+214,08317,Ortenaukreis,DISTRICT
+215,08325,Rottweil,DISTRICT
+216,08326,Schwarzwald-Baar-Kreis,DISTRICT
+217,08327,Tuttlingen,DISTRICT
+218,08335,Konstanz,DISTRICT
+219,08336,Lörrach,DISTRICT
+220,08337,Waldshut,DISTRICT
+221,08415,Reutlingen,DISTRICT
+222,08416,Tübingen,DISTRICT
+223,08417,Zollernalbkreis,DISTRICT
+224,08421,"Ulm, Stadtkreis",DISTRICT
+225,08425,Alb-Donau-Kreis,DISTRICT
+226,08426,Biberach,DISTRICT
+227,08435,Bodenseekreis,DISTRICT
+228,08436,Ravensburg,DISTRICT
+229,08437,Sigmaringen,DISTRICT
+230,09   ,Bayern,STATE
+231,09161,Ingolstadt,DISTRICT
+232,09162,"München, Landeshauptstadt",DISTRICT
+233,09163,Rosenheim,DISTRICT
+234,09171,Altötting,DISTRICT
+235,09172,Berchtesgadener Land,DISTRICT
+236,09173,Bad Tölz-Wolfratshausen,DISTRICT
+237,09174,Dachau,DISTRICT
+238,09175,Ebersberg,DISTRICT
+239,09176,Eichstätt,DISTRICT
+240,09177,Erding,DISTRICT
+241,09178,Freising,DISTRICT
+242,09179,Fürstenfeldbruck,DISTRICT
+243,09180,Garmisch-Partenkirchen,DISTRICT
+244,09181,Landsberg am Lech,DISTRICT
+245,09182,Miesbach,DISTRICT
+246,09183,Mühldorf a.Inn,DISTRICT
+247,09184,München,DISTRICT
+248,09185,Neuburg-Schrobenhausen,DISTRICT
+249,09186,Pfaffenhofen a.d.Ilm,DISTRICT
+250,09187,Rosenheim,DISTRICT
+251,09188,Starnberg,DISTRICT
+252,09189,Traunstein,DISTRICT
+253,09190,Weilheim-Schongau,DISTRICT
+254,09261,Landshut,DISTRICT
+255,09262,Passau,DISTRICT
+256,09263,Straubing,DISTRICT
+257,09271,Deggendorf,DISTRICT
+258,09272,Freyung-Grafenau,DISTRICT
+259,09273,Kelheim,DISTRICT
+260,09274,Landshut,DISTRICT
+261,09275,Passau,DISTRICT
+262,09276,Regen,DISTRICT
+263,09277,Rottal-Inn,DISTRICT
+264,09278,Straubing-Bogen,DISTRICT
+265,09279,Dingolfing-Landau,DISTRICT
+266,09361,Amberg,DISTRICT
+267,09362,Regensburg,DISTRICT
+268,09363,Weiden i.d.OPf.,DISTRICT
+269,09371,Amberg-Sulzbach,DISTRICT
+270,09372,Cham,DISTRICT
+271,09373,Neumarkt i.d.OPf.,DISTRICT
+272,09374,Neustadt a.d.Waldnaab,DISTRICT
+273,09375,Regensburg,DISTRICT
+274,09376,Schwandorf,DISTRICT
+275,09377,Tirschenreuth,DISTRICT
+276,09461,Bamberg,DISTRICT
+277,09462,Bayreuth,DISTRICT
+278,09463,Coburg,DISTRICT
+279,09464,Hof,DISTRICT
+280,09471,Bamberg,DISTRICT
+281,09472,Bayreuth,DISTRICT
+282,09473,Coburg,DISTRICT
+283,09474,Forchheim,DISTRICT
+284,09475,Hof,DISTRICT
+285,09476,Kronach,DISTRICT
+286,09477,Kulmbach,DISTRICT
+287,09478,Lichtenfels,DISTRICT
+288,09479,Wunsiedel i.Fichtelgebirge,DISTRICT
+289,09561,Ansbach,DISTRICT
+290,09562,Erlangen,DISTRICT
+291,09563,Fürth,DISTRICT
+292,09564,Nürnberg,DISTRICT
+293,09565,Schwabach,DISTRICT
+294,09571,Ansbach,DISTRICT
+295,09572,Erlangen-Höchstadt,DISTRICT
+296,09573,Fürth,DISTRICT
+297,09574,Nürnberger Land,DISTRICT
+298,09575,Neustadt a.d.Aisch-Bad Windsheim,DISTRICT
+299,09576,Roth,DISTRICT
+300,09577,Weißenburg-Gunzenhausen,DISTRICT
+301,09661,Aschaffenburg,DISTRICT
+302,09662,Schweinfurt,DISTRICT
+303,09663,Würzburg,DISTRICT
+304,09671,Aschaffenburg,DISTRICT
+305,09672,Bad Kissingen,DISTRICT
+306,09673,Rhön-Grabfeld,DISTRICT
+307,09674,Haßberge,DISTRICT
+308,09675,Kitzingen,DISTRICT
+309,09676,Miltenberg,DISTRICT
+310,09677,Main-Spessart,DISTRICT
+311,09678,Schweinfurt,DISTRICT
+312,09679,Würzburg,DISTRICT
+313,09761,Augsburg,DISTRICT
+314,09762,Kaufbeuren,DISTRICT
+315,09763,Kempten (Allgäu),DISTRICT
+316,09764,Memmingen,DISTRICT
+317,09771,Aichach-Friedberg,DISTRICT
+318,09772,Augsburg,DISTRICT
+319,09773,Dillingen a.d.Donau,DISTRICT
+320,09774,Günzburg,DISTRICT
+321,09775,Neu-Ulm,DISTRICT
+322,09776,Lindau (Bodensee),DISTRICT
+323,09777,Ostallgäu,DISTRICT
+324,09778,Unterallgäu,DISTRICT
+325,09779,Donau-Ries,DISTRICT
+326,09780,Oberallgäu,DISTRICT
+327,10   ,Saarland,STATE
+328,10041,Regionalverband Saarbrücken,DISTRICT
+329,10042,Merzig-Wadern,DISTRICT
+330,10043,Neunkirchen,DISTRICT
+331,10044,Saarlouis,DISTRICT
+332,10045,Saarpfalz-Kreis,DISTRICT
+333,10046,St. Wendel,DISTRICT
+334,11   ,Berlin,STATE
+335,11000,"Berlin, Stadt",DISTRICT
+336,12   ,Brandenburg,STATE
+337,12051,"Brandenburg an der Havel, Stadt",DISTRICT
+338,12052,"Cottbus, Stadt",DISTRICT
+339,12053,"Frankfurt (Oder), Stadt",DISTRICT
+340,12054,"Potsdam, Stadt",DISTRICT
+341,12060,Barnim,DISTRICT
+342,12061,Dahme-Spreewald,DISTRICT
+343,12062,Elbe-Elster,DISTRICT
+344,12063,Havelland,DISTRICT
+345,12064,Märkisch-Oderland,DISTRICT
+346,12065,Oberhavel,DISTRICT
+347,12066,Oberspreewald-Lausitz,DISTRICT
+348,12067,Oder-Spree,DISTRICT
+349,12068,Ostprignitz-Ruppin,DISTRICT
+350,12069,Potsdam-Mittelmark,DISTRICT
+351,12070,Prignitz,DISTRICT
+352,12071,Spree-Neiße,DISTRICT
+353,12072,Teltow-Fläming,DISTRICT
+354,12073,Uckermark,DISTRICT
+355,13   ,Mecklenburg-Vorpommern,STATE
+356,13003,Rostock,DISTRICT
+357,13004,Schwerin,DISTRICT
+358,13071,Mecklenburgische Seenplatte,DISTRICT
+359,13072,Landkreis Rostock,DISTRICT
+360,13073,Vorpommern-Rügen,DISTRICT
+361,13074,Nordwestmecklenburg,DISTRICT
+362,13075,Vorpommern-Greifswald,DISTRICT
+363,13076,Ludwigslust-Parchim,DISTRICT
+364,14   ,Sachsen,STATE
+365,14511,"Chemnitz, Stadt",DISTRICT
+366,14521,Erzgebirgskreis,DISTRICT
+367,14522,Mittelsachsen,DISTRICT
+368,14523,Vogtlandkreis,DISTRICT
+369,14524,Zwickau,DISTRICT
+370,14612,"Dresden, Stadt",DISTRICT
+371,14625,Bautzen,DISTRICT
+372,14626,Görlitz,DISTRICT
+373,14627,Meißen,DISTRICT
+374,14628,Sächsische Schweiz-Osterzgebirge,DISTRICT
+375,14713,"Leipzig, Stadt",DISTRICT
+376,14729,Leipzig,DISTRICT
+377,14730,Nordsachsen,DISTRICT
+378,15   ,Sachsen-Anhalt,STATE
+379,15001,"Dessau-Roßlau, Stadt",DISTRICT
+380,15002,"Halle (Saale), Stadt",DISTRICT
+381,15003,"Magdeburg, Landeshauptstadt",DISTRICT
+382,15081,Altmarkkreis Salzwedel,DISTRICT
+383,15082,Anhalt-Bitterfeld,DISTRICT
+384,15083,Börde,DISTRICT
+385,15084,Burgenlandkreis,DISTRICT
+386,15085,Harz,DISTRICT
+387,15086,Jerichower Land,DISTRICT
+388,15087,Mansfeld-Südharz,DISTRICT
+389,15088,Saalekreis,DISTRICT
+390,15089,Salzlandkreis,DISTRICT
+391,15090,Stendal,DISTRICT
+392,15091,Wittenberg,DISTRICT
+393,16   ,Thüringen,STATE
+394,16051,"Erfurt, Stadt",DISTRICT
+395,16052,"Gera, Stadt",DISTRICT
+396,16053,"Jena, Stadt",DISTRICT
+397,16054,"Suhl, Stadt",DISTRICT
+398,16055,"Weimar, Stadt",DISTRICT
+399,16056,"Eisenach, Stadt",DISTRICT
+400,16061,Eichsfeld,DISTRICT
+401,16062,Nordhausen,DISTRICT
+402,16063,Wartburgkreis,DISTRICT
+403,16064,Unstrut-Hainich-Kreis,DISTRICT
+404,16065,Kyffhäuserkreis,DISTRICT
+405,16066,Schmalkalden-Meiningen,DISTRICT
+406,16067,Gotha,DISTRICT
+407,16068,Sömmerda,DISTRICT
+408,16069,Hildburghausen,DISTRICT
+409,16070,Ilm-Kreis,DISTRICT
+410,16071,Weimarer Land,DISTRICT
+411,16072,Sonneberg,DISTRICT
+412,16073,Saalfeld-Rudolstadt,DISTRICT
+413,16074,Saale-Holzland-Kreis,DISTRICT
+414,16075,Saale-Orla-Kreis,DISTRICT
+415,16076,Greiz,DISTRICT
+416,16077,Altenburger Land,DISTRICT
